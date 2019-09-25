@@ -62,13 +62,13 @@ void hMatch(const CmdLineType &CmdLineObj)
   typename ImType::RegionType inputRegion = inputIm->GetBufferedRegion();
   typename ImType::SizeType size = inputRegion.GetSize();
   int zsize = size[2];
-  size[2] = 1; // we extract along z direction
+  size[2] = 0; // we extract along z direction
   typename ImType::IndexType start = inputRegion.GetIndex();
   start[2] = CmdLineObj.RefSlice;
   typename ImType::RegionType desiredRegion;
   desiredRegion.SetSize(  size  );
   desiredRegion.SetIndex( start );
-
+  extractFilter->SetInput(inputIm);
   extractFilter->SetExtractionRegion( desiredRegion );
 
   typename ImTypeSl::Pointer RefSlice = extractFilter->GetOutput();
@@ -80,6 +80,10 @@ void hMatch(const CmdLineType &CmdLineObj)
   hm->SetReferenceImage( RefSlice );
   hm->ThresholdAtMeanIntensityOff();
   hm->SetReferenceThreshold( CmdLineObj.Thresh );
+  hm->SetSourceThreshold( CmdLineObj.Thresh );
+
+  hm->SetNumberOfMatchPoints( 5 );
+  hm->SetNumberOfHistogramLevels( 512 );
 
   using SlicerType = itk::SliceBySliceImageFilter<ImType, ImType, HMType>;
   typename SlicerType::Pointer slicer = SlicerType::New();

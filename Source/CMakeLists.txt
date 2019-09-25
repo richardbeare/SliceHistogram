@@ -46,9 +46,9 @@ SET(Libraries
 #MyExe will be built using the files MyClass.h and MyClass.cxx, and it will
 #be linked to all the libraries you specified above. 
 #You can build more than one executable per project
-SET(CurrentExe "ImageCompare")
-ADD_EXECUTABLE(${CurrentExe} ImageCompare.cxx) 
-TARGET_LINK_LIBRARIES(${CurrentExe} ${Libraries})
+#SET(CurrentExe "ImageCompare")
+#ADD_EXECUTABLE(${CurrentExe} ImageCompare.cxx) 
+#TARGET_LINK_LIBRARIES(${CurrentExe} ${Libraries})
 SET(CurrentExe "sliceHistogram")
 ADD_EXECUTABLE(${CurrentExe} sliceHistogram.cxx) 
 TARGET_LINK_LIBRARIES(${CurrentExe} ${Libraries})
