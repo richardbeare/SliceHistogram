@@ -30,6 +30,11 @@ FOREACH(Package ${Required_Packages})
   LOADPACKAGE(${Package})
 ENDFOREACH(Package)
 
+INCLUDE_DIRECTORIES(
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/tclap/include
+)
+
 #Set any libraries that your project depends on.
 #examples: ITKCommon, VTKRendering, etc
 SET(Libraries

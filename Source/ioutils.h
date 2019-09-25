@@ -81,7 +81,7 @@ typename TImage::Pointer readIm(std::string filename)
     {
     std::cout << ex << std::endl;
     std::cout << filename << std::endl;
-    return 0;
+    return(nullptr);
     }
     result->DisconnectPipeline();
     return(result);
